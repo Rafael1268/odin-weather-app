@@ -1,5 +1,6 @@
 import "./style.css";
 import { renderPage } from "./render.js";
+import { el } from "date-fns/locale";
 const { add, parseISO, isSameDay } = require("date-fns");
 
 let data;
@@ -65,7 +66,28 @@ function getData(city) {
     data = result;
     const dates = getDates();
     seperateDates(dates);
-    renderPage(data, day1, unit, [day1, day2, day3, day4, day5]);
+    let wDay;
+    switch (selectedDay) {
+      case 'day1':
+        wDay = day1;
+        break;
+      case 'day2':
+        wDay = day2;
+        break;
+      case 'day3':
+        wDay = day3;
+        break;
+      case 'day4':
+        wDay = day4;
+        break;
+      case 'day5':
+        wDay = day5;
+        break;
+      default:
+        wDay = day1;
+        break;
+    };
+    renderPage(data, wDay, unit, [day1, day2, day3, day4, day5]);
   });
 };
 
@@ -113,5 +135,5 @@ function toggleUnits() {
     return;
   } else {
     getData(lastSearch);
-  };
+  }
 };
