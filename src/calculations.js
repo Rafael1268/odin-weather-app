@@ -14,4 +14,13 @@ function averageWind(d) {
   return num / d.length;
 };
 
-export { averageTemp, averageWind };
+function averageRain(d) {
+  let num = 0;
+  d.forEach(p => {
+    num = num + p.pop;
+  });
+  return num / d.length;
+};
+
+
+export { averageTemp, averageWind, averageRain };

@@ -1,5 +1,5 @@
 import { format, fromUnixTime, parseISO } from "date-fns";
-import { averageTemp, averageWind } from "./calculations";
+import { averageRain, averageTemp, averageWind } from "./calculations";
 
 function renderPage(data, day, unit, days) {
   document.querySelector('#ID1').innerText = data.city.name;
@@ -16,6 +16,8 @@ function renderPage(data, day, unit, days) {
   } else {
     document.querySelector('#ID7').innerText = `${windSpeed}MPH`
   };
+  const rainChance = Math.round(averageRain(day) * 100);
+  document.querySelector('#ID8').innerText = `${rainChance}%`
   const mainBottom = document.querySelector('.mainBottom');
   mainBottom.childNodes.forEach(child => {
     child.children[0].innerText = 'No Data';
@@ -31,7 +33,6 @@ function renderPage(data, day, unit, days) {
     div.children[2].innerHTML = `${Math.round(d.main.temp)}<span>&#176;</span>`;
     num++;
   });
-
   let num1 = 1;
   days.forEach(d => {
     const dayDiv = document.querySelector(`#day${num1}`).childNodes;
