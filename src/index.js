@@ -1,6 +1,6 @@
 import "./style.css";
 import { renderPage } from "./render.js";
-import { el } from "date-fns/locale";
+
 const { add, parseISO, isSameDay } = require("date-fns");
 
 let data;

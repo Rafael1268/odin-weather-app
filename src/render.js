@@ -5,9 +5,18 @@ function renderPage(data, day, unit, days) {
   document.querySelector('#ID1').innerText = data.city.name;
   const date1 = parseISO(data.list[0].dt_txt);
   document.querySelector('#ID2').innerText = format(date1, "EEEE, do MMM");
+  if (day.length < 5) {
+    document.querySelector('#img1').src = `img/${day[day.length - 1].weather[0].main}.png`
+  } else {
+    document.querySelector('#img1').src = `img/${day[5].weather[0].main}.png`
+  };
   const temp = averageTemp(day);
   document.querySelector('#ID3').innerHTML = `${Math.round(temp)}<span>&#176;</span>`;
-  document.querySelector('#ID4').innerText = data.list[0].weather[0].description;
+  if (day.length < 5) {
+    document.querySelector('#ID4').innerText = day[day.length - 1].weather[0].description;
+  } else {
+    document.querySelector('#ID4').innerText = day[5].weather[0].description;
+  };
   document.querySelector('#ID5').innerText = format(fromUnixTime(data.city.sunrise), "HH:mmaa");
   document.querySelector('#ID6').innerText = format(fromUnixTime(data.city.sunset), "HH:mmaa");
   const windSpeed = (Math.round(averageWind(day) * 100)) / 100;
@@ -36,6 +45,11 @@ function renderPage(data, day, unit, days) {
   let num1 = 1;
   days.forEach(d => {
     const dayDiv = document.querySelector(`#day${num1}`).childNodes;
+    if (d.length < 5) {
+      dayDiv[1].src = `img/${d[d.length - 1].weather[0].main}.png`;
+    } else {
+      dayDiv[1].src = `img/${d[5].weather[0].main}.png`;
+    };
     dayDiv[0].childNodes[0].innerText = format(parseISO(d[0].dt_txt), "MMM do");
     const temp2 = averageTemp(d);
     dayDiv[0].childNodes[1].innerHTML = `${Math.round(temp2)}<span>&#176;</span>`;
