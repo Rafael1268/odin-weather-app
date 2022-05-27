@@ -48,7 +48,7 @@ document.querySelector('#day5').addEventListener('click', () => {
 
 async function getWeather(city) {
   try {
-    const cityCords = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=4467607ba20a15e6c87ad7f913c73842`);
+    const cityCords = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=4467607ba20a15e6c87ad7f913c73842`);
     const data = await cityCords.json();
     const weather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=${data[0].lon}&appid=4467607ba20a15e6c87ad7f913c73842&units=${unit}`)
     const result = await weather.json();
