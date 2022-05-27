@@ -6,14 +6,14 @@ function renderPage(data, day, unit, days) {
   const date1 = parseISO(data.list[0].dt_txt);
   document.querySelector('#ID2').innerText = format(date1, "EEEE, do MMM");
   if (day.length < 5) {
-    document.querySelector('#img1').src = `img/${day[day.length - 1].weather[0].main}.png`
+    document.querySelector('#img1').src = `img/${day[0].weather[0].main}.png`
   } else {
     document.querySelector('#img1').src = `img/${day[5].weather[0].main}.png`
   };
   const temp = averageTemp(day);
   document.querySelector('#ID3').innerHTML = `${Math.round(temp)}<span>&#176;</span>`;
   if (day.length < 5) {
-    document.querySelector('#ID4').innerText = day[day.length - 1].weather[0].description;
+    document.querySelector('#ID4').innerText = day[0].weather[0].description;
   } else {
     document.querySelector('#ID4').innerText = day[5].weather[0].description;
   };
@@ -46,7 +46,7 @@ function renderPage(data, day, unit, days) {
   days.forEach(d => {
     const dayDiv = document.querySelector(`#day${num1}`).childNodes;
     if (d.length < 5) {
-      dayDiv[1].src = `img/${d[d.length - 1].weather[0].main}.png`;
+      dayDiv[1].src = `img/${d[0].weather[0].main}.png`;
     } else {
       dayDiv[1].src = `img/${d[5].weather[0].main}.png`;
     };
