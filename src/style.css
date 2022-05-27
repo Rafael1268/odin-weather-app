@@ -230,3 +230,33 @@ body {
   width: 50px;
   height: 50px;
 }
+
+@media (max-width: 800px) {
+  .mainBottom {
+    grid-template-columns: repeat(4, 85px);
+    grid-template-rows: 110px 110px;
+  }
+
+  .daySelection {
+    width: 385px;;
+  }
+}
+
+@media (max-width: 350px) {
+  .navBar {
+    flex-direction: column;
+  }
+
+  #toggleUnits {
+    margin-top: 15px;
+  }
+
+  .mainBottom {
+    grid-template-columns: repeat(3, 85px);
+    grid-template-rows: repeat(3, 110px);
+  }
+
+  .daySelection {
+    width: 185px;
+  }
+}
