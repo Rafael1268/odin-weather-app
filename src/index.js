@@ -10,6 +10,7 @@ let day4 = [];
 let day5 = [];
 let unit = 'metric';
 let lastSearch = '';
+let selectedDay = '';
 
 document.querySelector('#toggleUnits').addEventListener('click', () => toggleUnits());
 document.querySelector('#searchBar').addEventListener('keydown', () => {
@@ -17,6 +18,31 @@ document.querySelector('#searchBar').addEventListener('keydown', () => {
     getData(event.target.value);
     event.target.value = '';
   };
+});
+document.querySelector('#day1').addEventListener('click', () => {
+  selectedDay = 'day1';
+  if (lastSearch === '') return; 
+  renderPage(data, day1, unit, [day1, day2, day3, day4, day5]);
+});
+document.querySelector('#day2').addEventListener('click', () => {
+  selectedDay = 'day2';
+  if (lastSearch === '') return; 
+  renderPage(data, day2, unit, [day1, day2, day3, day4, day5]);
+});
+document.querySelector('#day3').addEventListener('click', () => {
+  selectedDay = 'day3';
+  if (lastSearch === '') return; 
+  renderPage(data, day3, unit, [day1, day2, day3, day4, day5]);
+});
+document.querySelector('#day4').addEventListener('click', () => {
+  selectedDay = 'day4';
+  if (lastSearch === '') return; 
+  renderPage(data, day4, unit, [day1, day2, day3, day4, day5]);
+});
+document.querySelector('#day5').addEventListener('click', () => {
+  selectedDay = 'day5';
+  if (lastSearch === '') return; 
+  renderPage(data, day5, unit, [day1, day2, day3, day4, day5]);
 });
 
 async function getWeather(city) {
@@ -28,6 +54,8 @@ async function getWeather(city) {
     return result;
   } catch (err) {
     console.log(err);
+    alert('City not found!');
+    return;
   };
 };
 
@@ -74,7 +102,6 @@ function seperateDates(dates) {
 
 function toggleUnits() {
   const unitBtn = document.querySelector('#toggleUnits');
-  const searchBar = document.querySelector('#searchBar');
   if (unit === 'metric') {
     unit = 'imperial';
     unitBtn.innerText = 'Imperial';
