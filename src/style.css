@@ -75,6 +75,7 @@ body {
 
 #toggleUnits:hover {
   border: 2px solid var(--main-c);
+  cursor: pointer;
 }
 
 /* Main Top */
@@ -136,6 +137,10 @@ body {
 .mainTop span {
   position: absolute;
   color: var(--main-c);
+}
+
+#ID4 {
+  text-align: center;
 }
 
 /* Main Bottom */
