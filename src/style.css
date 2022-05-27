@@ -97,7 +97,11 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 10px;
+}
+
+#topDiv {
+  margin-top: 0;
 }
 
 .dataRight div img {
