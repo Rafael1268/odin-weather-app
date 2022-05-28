@@ -235,6 +235,27 @@ body {
   height: 50px;
 }
 
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.footer a {
+  color: var(--white-c);
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.footer i {
+  color: var(--main-c);
+  margin-right: 1px;
+}
+
+/* Mobile Support */
 @media (max-width: 800px) {
   .mainBottom {
     grid-template-columns: repeat(4, 85px);
