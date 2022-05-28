@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Weather App',
+      title: 'Weather',
       filename: 'index.html',
       template: 'src/template.html',
     }),
